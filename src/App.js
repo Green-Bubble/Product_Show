@@ -10,6 +10,8 @@ import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
 import ProductList from './components/Product/ProductList';
 import ProductDetails from './components/Product/ProductDetails';
+import Carts from './components/ShoppingCart/Carts';
+import Forgot from './components/Authentication/Forgot';
 
 function App() {
   const isAuth = useSelector((state) => state.user.auth);
@@ -21,13 +23,15 @@ function App() {
         <Routes>
           {isAuth &&(
             <>
+              <Route path="/mycarts" element={<Carts />} />
               <Route path="/productlist" element={<ProductList />} />
               <Route path="/productlist/:id" element={<ProductDetails />} />
             </>
           )}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {/* <Route path='*' element={ <Navigate to="/login" /> }/> */}
+          <Route path="/forgot" element={<Forgot />} />
+          <Route path='*' element={ <Navigate to="/login" /> }/>
         </Routes>
         
       </Router>

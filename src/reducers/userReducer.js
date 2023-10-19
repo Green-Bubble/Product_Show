@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils';
 import { SET_AUTH, ADD_USER } from '../actions/types';
 
 const initialState = {
@@ -6,7 +5,7 @@ const initialState = {
   users : [
     {
         name : 'Daniel',
-        password : 'asdfasdf'
+        password : 'Victory!23'
     },
   ],
 };

@@ -26,7 +26,7 @@ function ProductList() {
     }, [handleScroll]);
 
     return (
-        <div className='grid md:grid-cols-3 ms:grid-cols-1 lg:grid-cols-5 jsutify-between'>
+        <div className='grid md:grid-cols-4 ms:grid-cols-1 lg:grid-cols-6 jsutify-between'>
             {products.map(product => <ProductCard product={product} key={product.id}></ProductCard>)}
         </div>
     );

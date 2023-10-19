@@ -99,13 +99,13 @@ export default function Login() {
           >
             Sign In
           </button>
-          <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+          <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/forgot">
             Forgot Password?
           </a>
         </div>
       </form>
       <p className="text-center text-gray-500 text-xs">
-        &copy; 2020 Acme Corp. All rights reserved.
+        &copy; 2023 Shopping Center!
       </p>
     </div>
   );

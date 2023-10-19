@@ -1,8 +1,30 @@
-# Getting Started with Create React App
+# Product_Show
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was developed using redux and redux-saga for fetching datas in React. It can show you many products information including scrolling and seeing detail. So you can easily search and buy products. 
+The interface was built using Tailwind CSS and it is very simple and friendly with customers. 
+## Project Instruction
 
-## Available Scripts
+### Login :
+Username/Email and password
+
+### Registration :
+Username, Email, Password, Confirm Password
+
+### Password Recovery :
+Email
+
+### Product Listing:
+Fetch products from a provided API or create a mock API using tools like JSON Server.
+Implement infinite scrolling or pagination to load more products as the user scrolls down.
+
+### Product Details:
+On clicking a product, the user should be taken to a detailed product page with additional information.
+### Shopping Cart:
+Users should be able to add products to the shopping cart.
+Implement a cart icon with a counter indicating the number of items in the cart.
+
+
+## How to run this app?
 
 In the project directory, you can run:
 
@@ -39,32 +61,39 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Code splitting with Redux-Saga
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### Code Splitting with Redux and Redux-Saga
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    function* fetchProductsSaga(action) {
+        let url = "https://fakestoreapi.com/products?limit=" + (action.payload+15);
+        try {
+            const response = yield call(() => axios.get(url));
+            yield put(fetchProductsSuccess(response.data));
+        } catch (error) {
+            yield put(fetchProductsFailure(error.message));
+        }
+    }
 
-### Analyzing the Bundle Size
+    function* productSaga() {
+        yield takeLatest(FETCH_PRODUCTS, fetchProductsSaga);
+    }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+### Technical Stacks
+React,
+Tailwind CSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+### How to navigate Site
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Register User.
+2. Login User. => You can see Product Lists.
+3. When you scroll down, then fetch more products.
+4. If you like some products, then you can see detail.
+5. If you buy something, you can add to carts.
+6. Enjoy yourself.

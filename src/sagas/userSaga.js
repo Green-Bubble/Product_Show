@@ -4,7 +4,6 @@ import { FETCH_PRODUCTS } from '../actions/types';
 import { fetchProductsSuccess, fetchProductsFailure } from '../actions/productActions';
 
 function* fetchProductsSaga(action) {
-  console.log(action.payload);
   let url = "https://fakestoreapi.com/products?limit=" + (action.payload+15);
   try {
     const response = yield call(() => axios.get(url));
