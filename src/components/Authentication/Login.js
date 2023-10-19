@@ -54,6 +54,7 @@ export default function Login() {
   const signin = () => {
     if (validate()) {
       dispatch(setAuth(true));
+      localStorage.setItem('auth', true);
       navigate('/productlist');
     }
   };

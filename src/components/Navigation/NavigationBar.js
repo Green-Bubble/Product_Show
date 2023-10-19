@@ -7,6 +7,7 @@ const Navbar = ( ) => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
+    localStorage.removeItem('auth');
     dispatch(setAuth(false));
   };
   

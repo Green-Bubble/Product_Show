@@ -2,11 +2,11 @@ import { act } from 'react-dom/test-utils';
 import { SET_AUTH, ADD_USER } from '../actions/types';
 
 const initialState = {
-  auth : false,
+  auth : localStorage.getItem('auth') === 'true',
   users : [
     {
         name : 'Daniel',
-        password : 'Daniel'
+        password : 'asdfasdf'
     },
   ],
 };
@@ -14,7 +14,7 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_AUTH:
-      console.log(action.payload)
+      localStorage.setItem('auth', action.payload);
       return {
         auth: action.payload,
       };

@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
 import ProductList from './components/Product/ProductList';
+import ProductDetails from './components/Product/ProductDetails';
 
 function App() {
   const isAuth = useSelector((state) => state.user.auth);
@@ -19,11 +20,14 @@ function App() {
         <NavigationBar />
         <Routes>
           {isAuth &&(
-            <Route path="/productlist" element={<ProductList />} />
+            <>
+              <Route path="/productlist" element={<ProductList />} />
+              <Route path="/productlist/:id" element={<ProductDetails />} />
+            </>
           )}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path='*' element={ <Navigate to="/login" /> }/>
+          {/* <Route path='*' element={ <Navigate to="/login" /> }/> */}
         </Routes>
         
       </Router>

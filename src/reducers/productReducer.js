@@ -1,20 +1,21 @@
+import { act } from 'react-dom/test-utils';
 import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions/types';
+import { FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE } from '../actions/types';
 
 const initialState = {
-  cart: [],
+  products: [],
+  errors: '',
 };
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TO_CART:
+    case FETCH_PRODUCTS_SUCCESS:
       return {
-        ...state,
-        cart: [...state.cart, action.payload],
+        products: action.payload,
       };
-    case REMOVE_FROM_CART:
+    case FETCH_PRODUCTS_FAILURE:
       return {
-        ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload),
+        errors: action.payload,
       };
     default:
       return state;

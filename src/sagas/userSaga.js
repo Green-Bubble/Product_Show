@@ -1,18 +1,21 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-//import { FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS } from '../actions/types';
+import { FETCH_PRODUCTS } from '../actions/types';
+import { fetchProductsSuccess, fetchProductsFailure } from '../actions/productActions';
 
-function* fetchProductsSaga() {
+function* fetchProductsSaga(action) {
+  console.log(action.payload);
+  let url = "https://fakestoreapi.com/products?limit=" + (action.payload+15);
   try {
-    const response = yield axios.get('/api/products'); // Adjust the API endpoint accordingly
-    //yield put({ type: FETCH_PRODUCTS_SUCCESS, payload: response.data });
+    const response = yield call(() => axios.get(url));
+    yield put(fetchProductsSuccess(response.data));
   } catch (error) {
-    console.error('Error fetching products:', error);
+    yield put(fetchProductsFailure(error.message));
   }
 }
 
 function* productSaga() {
-  //yield takeLatest(FETCH_PRODUCTS_REQUEST, fetchProductsSaga);
+  yield takeLatest(FETCH_PRODUCTS, fetchProductsSaga);
 }
 
 export default productSaga;
