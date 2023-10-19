@@ -91,7 +91,7 @@ Tailwind CSS
 
 ### How to navigate Site
 
-1. Register User.
+1. Register User.(default user : BrianGamble  password : Victory!23)
 2. Login User. => You can see Product Lists.
 3. When you scroll down, then fetch more products.
 4. If you like some products, then you can see detail.

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addCarts } from '../../actions/productActions';
 
-const ProductDetails = ( props ) => {
+const ProductDetails = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const products = useSelector((state) => state.product.products);

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProductDetails from './ProductDetails';
 
 function ProductCard(props) {
     const { product } = props;
