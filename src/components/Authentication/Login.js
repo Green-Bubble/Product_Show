@@ -34,7 +34,7 @@ export default function Login() {
       newErrors.password = 'Password needs to be at least 6 characters.';
     }
 
-    const matchingUser = users.find((user) => user.name === uName && user.password === uPassword);
+    const matchingUser = users.find((user) => user.uName === uName && user.uPassword === uPassword);
     if (!matchingUser) {
       newErrors.other = 'Wrong Username or Password.';
     }

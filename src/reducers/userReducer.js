@@ -4,8 +4,8 @@ const initialState = {
   auth : localStorage.getItem('auth') === 'true',
   users : [
     {
-        name : 'BrianGamble',
-        password : 'Victory!23'
+        uName : 'BrianGamble',
+        uPassword : 'Victory!23'
     },
   ],
 };

@@ -47,7 +47,7 @@ function Register() {
       newErrors.other = "Passwords do not match!";
     }
 
-    if (users.find((user) => user.name === uName)) {
+    if (users.find(user => user.uName === uName)) {
       newErrors.other = "User already exists!";
     }
 
@@ -69,9 +69,9 @@ function Register() {
 
   const register = () => {
     if (validate()) {
-      localStorage.setItem('auth', true);
+      //localStorage.setItem('auth', true);
       dispatch(addUser({ uName, uPassword }));
-      navigate('/productlist');
+      navigate('/login');
     }
   };
 
